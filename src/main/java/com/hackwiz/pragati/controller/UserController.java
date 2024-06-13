@@ -7,6 +7,7 @@ import com.hackwiz.pragati.models.responses.GetRecruiterDetailsResponse;
 import com.hackwiz.pragati.models.responses.LoginRegisterResponse;
 import com.hackwiz.pragati.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +48,11 @@ public class UserController {
             log.error("Exception occurred while login/register user. StackTrace : {}", ex.getStackTrace());
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return ResponseEntity.status(httpStatus).body(loginRegisterResponse);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+        headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+        headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        return ResponseEntity.status(httpStatus).headers(headers).body(loginRegisterResponse);
     }
 
     @Consumes(MediaType.APPLICATION_JSON)
