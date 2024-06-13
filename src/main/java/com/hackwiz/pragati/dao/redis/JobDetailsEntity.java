@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 @Data
 @Builder
@@ -19,6 +20,7 @@ public class JobDetailsEntity {
 
     @Id
     private long id;
+    @Indexed
     private long recruiterDetailsId;
     private Skill skill;
     private float rate;
