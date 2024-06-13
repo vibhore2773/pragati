@@ -4,5 +4,5 @@ import com.hackwiz.pragati.dao.redis.JobDetailsEntity;
 
 public interface AllocationHandler {
 
-    void processJobAllocation(JobDetailsEntity jobDetailsEntity);
+    boolean processJobAllocation(JobDetailsEntity jobDetailsEntity);
 }

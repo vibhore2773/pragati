@@ -13,7 +13,6 @@ public class RecruiterService {
 
     private final RedisHelperService redisHelperService;
     private final Producer producer;
-
     private final ObjectMapper objectMapper;
 
     public RecruiterService(RedisHelperService redisHelperService, Producer producer, ObjectMapper objectMapper) {

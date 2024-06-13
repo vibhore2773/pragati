@@ -28,6 +28,7 @@ public class ProfessionalDetails {
     private Timeline availability;
     private PersonalDetails personalDetails;
     private List<AssignedJobs> assignedJobs;
+    private boolean isJobAssigned;
 
 
     @Data
