@@ -28,6 +28,5 @@ public class Producer {
                 ex.printStackTrace(System.out);
             }
         });
-
     }
 }
