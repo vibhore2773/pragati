@@ -32,6 +32,7 @@ public class UserService {
         } else {
             log.info("LoginRegisterService.loginRegisterUser: User not found with phone number={}, registering user", loginRegisterRequest.getPhone());
             UserDetailsEntity newUser = UserDetailsEntity.builder()
+                    .id(1l)
                     .name(loginRegisterRequest.getName())
                     .email(loginRegisterRequest.getEmail())
                     .phoneNumber(loginRegisterRequest.getPhone())

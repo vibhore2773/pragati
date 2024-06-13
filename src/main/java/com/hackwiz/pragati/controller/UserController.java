@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,13 +31,13 @@ public class UserController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @PostMapping(value = LOGIN_REGISTER_USER)
-    public ResponseEntity<LoginRegisterResponse> loginRegisterUser(LoginRegisterRequest loginRegisterRequest) {
+    public ResponseEntity<LoginRegisterResponse> loginRegisterUser(@RequestBody LoginRegisterRequest loginRegisterRequest) {
         log.info("UserController.loginRegisterUser: loginRegisterRequest={}", loginRegisterRequest);
         LoginRegisterResponse loginRegisterResponse = new LoginRegisterResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
             userService.loginRegisterUser(loginRegisterRequest);
-
+            loginRegisterResponse.setSuccess(true);
         } catch (Exception ex) {
             log.error("Exception occurred while login/register user. StackTrace : {}", ex.getStackTrace());
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;

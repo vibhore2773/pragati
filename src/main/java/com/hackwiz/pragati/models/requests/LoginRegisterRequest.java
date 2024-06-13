@@ -1,5 +1,6 @@
 package com.hackwiz.pragati.models.requests;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hackwiz.pragati.enums.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LoginRegisterRequest {
 
     private String name;
