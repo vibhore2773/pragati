@@ -49,9 +49,10 @@ public class UserController {
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-        headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-        headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        headers.add("Access-Control-Allow-Origin", "*");
+        headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        headers.add("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization");
+        headers.add("Access-Control-Allow-Credentials", "true");
         return ResponseEntity.status(httpStatus).headers(headers).body(loginRegisterResponse);
     }
 
