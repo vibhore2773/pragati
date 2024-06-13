@@ -32,7 +32,7 @@ public class AllocationHandlerImpl implements AllocationHandler {
         List<ProfessionalDetails> matchedProfessionals = new ArrayList<>();
         for (ProfessionalDetails professionalDetails : professionalDetailsList) {
             if (matchAddress(professionalDetails.getAddress(), jobDetailsEntity.getAddress())
-                    && matchSkill(jobDetailsEntity.getStaticSkill(), professionalDetails.getStaticSkills())
+                    && matchSkill(jobDetailsEntity.getSkill(), professionalDetails.getSkills())
                     && matchTimeline(jobDetailsEntity.getTimeline(), professionalDetails.getAvailability())) {
                 matchedProfessionals.add(professionalDetails);
             }
