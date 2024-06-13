@@ -3,6 +3,7 @@ package com.hackwiz.pragati.dao.redis;
 
 import com.hackwiz.pragati.enums.Skill;
 import com.hackwiz.pragati.models.Address;
+import com.hackwiz.pragati.models.responses.Timeline;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,20 +26,11 @@ public class ProfessionalDetails {
     private Address address;
     private String qualification;
     private List<Skill> skills;
-    private Availability availability;
+    private Timeline availability;
     private PersonalDetails personalDetails;
     private List<AssignedJobs> assignedJobs;
     private boolean kycVerified;
 
-
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    private static class Availability {
-        private String startDate;
-        private String endDate;
-    }
 
     @Data
     @Builder
