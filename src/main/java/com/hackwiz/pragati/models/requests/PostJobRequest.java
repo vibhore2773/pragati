@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,9 +18,9 @@ import lombok.NoArgsConstructor;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class PostJobRequest {
     private Skill jobType;
-    private String startDate;
-    private String endDate;
+    private Date startDate;
+    private Date endDate;
     private Address address;
     private long maxRate;
-
+    private int requiredProfessionals;
 }

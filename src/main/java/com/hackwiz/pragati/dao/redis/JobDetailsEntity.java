@@ -20,7 +20,7 @@ import org.springframework.data.redis.core.RedisHash;
 public class JobDetailsEntity {
 
     @Id
-    private long id;
+    private String id;
     private long recruiterDetailsId;
     private Skill skill;
     private float rate;
