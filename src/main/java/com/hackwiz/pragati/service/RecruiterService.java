@@ -34,7 +34,7 @@ public class RecruiterService {
                     .id(jobId)
                     .jobStatus(JobStatus.INITIATED)
                     .recruiterDetailsId(Long.parseLong(recruiterId))
-                    .skill(request.getJobType())
+                    .staticSkill(request.getJobType())
                     .timeline(Timeline.builder()
                             .endDate(request.getEndDate())
                             .startDate(request.getStartDate()).build())

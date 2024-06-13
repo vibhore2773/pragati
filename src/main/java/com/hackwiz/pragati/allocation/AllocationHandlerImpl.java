@@ -3,6 +3,7 @@ package com.hackwiz.pragati.allocation;
 import com.hackwiz.pragati.dao.redis.JobDetailsEntity;
 import com.hackwiz.pragati.dao.redis.ProfessionalDetails;
 import com.hackwiz.pragati.enums.Skill;
+import com.hackwiz.pragati.enums.StaticSkill;
 import com.hackwiz.pragati.models.Address;
 import com.hackwiz.pragati.models.responses.Timeline;
 import com.hackwiz.pragati.repostitory.redis.ProfessionalDetailsRepo;
@@ -43,8 +44,8 @@ public class AllocationHandlerImpl implements AllocationHandler {
     }
 
     private boolean matchSkill(Skill requiredSkill, List<Skill> availableSkills) {
-        for (Skill skill : availableSkills) {
-            if (requiredSkill.equals(skill)) return true;
+        for (Skill staticSkill : availableSkills) {
+            if (requiredSkill.equals(staticSkill)) return true;
         }
         return false;
     }

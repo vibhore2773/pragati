@@ -1,5 +1,6 @@
 package com.hackwiz.pragati.controller;
 
+import com.hackwiz.pragati.models.requests.AddSkillsKycRequest;
 import com.hackwiz.pragati.models.requests.LoginRegisterRequest;
 import com.hackwiz.pragati.models.responses.GetProfessionalDetailsResponse;
 import com.hackwiz.pragati.models.responses.GetRecruiterDetailsResponse;
@@ -19,6 +20,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import static com.hackwiz.pragati.constants.ApiPaths.EDIT_PROFESSIONAL_USER_DETAILS;
 import static com.hackwiz.pragati.constants.ApiPaths.GET_PROFESSIONAL_USER_DETAILS;
 import static com.hackwiz.pragati.constants.ApiPaths.GET_RECRUITER_USER_DETAILS;
 import static com.hackwiz.pragati.constants.ApiPaths.LOGIN_REGISTER_USER;
@@ -85,4 +87,20 @@ public class UserController {
         return ResponseEntity.status(httpStatus).body(getRecruiterDetailsResponse);
     }
 
+
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @PostMapping(EDIT_PROFESSIONAL_USER_DETAILS)
+    public ResponseEntity<GetProfessionalDetailsResponse> getProfessionalDetails(@RequestBody AddSkillsKycRequest addSkillsKycRequest) {
+        log.info("UserController.getProfessionalDetails: ");
+        GetProfessionalDetailsResponse getProfessionalDetailsResponse = new GetProfessionalDetailsResponse();
+        HttpStatus httpStatus = HttpStatus.OK;
+        try {
+            getProfessionalDetailsResponse = userService.addProfessionalSkills(addSkillsKycRequest);
+        } catch (Exception ex) {
+            log.error("Exception occurred while login/register user. StackTrace : {}", ex.getStackTrace());
+            httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        return ResponseEntity.status(httpStatus).body(getProfessionalDetailsResponse);
+    }
 }

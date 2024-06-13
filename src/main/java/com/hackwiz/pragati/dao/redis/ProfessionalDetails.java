@@ -2,6 +2,7 @@ package com.hackwiz.pragati.dao.redis;
 
 
 import com.hackwiz.pragati.enums.Skill;
+import com.hackwiz.pragati.enums.StaticSkill;
 import com.hackwiz.pragati.models.Address;
 import com.hackwiz.pragati.models.responses.Timeline;
 import lombok.AllArgsConstructor;

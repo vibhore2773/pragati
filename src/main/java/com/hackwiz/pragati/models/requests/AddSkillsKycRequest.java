@@ -1,9 +1,9 @@
-package com.hackwiz.pragati.models.responses;
+package com.hackwiz.pragati.models.requests;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.hackwiz.pragati.dao.redis.JobDetailsEntity;
-import com.hackwiz.pragati.enums.UserType;
+import com.hackwiz.pragati.enums.Skill;
 import com.hackwiz.pragati.models.Address;
+import com.hackwiz.pragati.models.responses.Timeline;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,24 +16,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GetProfessionalDetailsResponse {
-
-    private UserType userType;
+public class AddSkillsKycRequest {
     private long userId;
-    private List<SkillResponse> skills;
+    private List<SkillRequest> skillList;
     private Address address;
-    private String profilePic;
-    private boolean kycVerified;
-    private List<JobDetailsEntity> jobDetails;
+    private boolean markKyc;
+    private Timeline availability;
+
 
     @Data
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class SkillResponse {
-        private String skill;
-        private int experience;
+    public static class SkillRequest {
+        private Skill skillName;
         private float rate;
     }
-
 }
