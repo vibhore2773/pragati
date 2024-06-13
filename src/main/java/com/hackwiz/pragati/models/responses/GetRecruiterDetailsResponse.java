@@ -19,7 +19,7 @@ import java.util.List;
 public class GetRecruiterDetailsResponse {
 
     private UserType userType;
-    private long userId;
+    private String userId;
     private Address address;
     private String profilePic;
     private List<JobDetailsEntity> jobDetails;

@@ -19,7 +19,7 @@ import java.util.List;
 public class GetProfessionalDetailsResponse {
 
     private UserType userType;
-    private long userId;
+    private String userId;
     private List<SkillResponse> skills;
     private Address address;
     private String profilePic;

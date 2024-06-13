@@ -22,7 +22,7 @@ public class UserDetailsEntity implements Serializable {
 
     @Id
     @Indexed
-    private Long id;
+    private String id;
 
     private String name;
     private String email;

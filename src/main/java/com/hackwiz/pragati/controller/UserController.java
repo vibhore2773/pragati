@@ -44,7 +44,7 @@ public class UserController {
         LoginRegisterResponse loginRegisterResponse = new LoginRegisterResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            long userId = userService.loginRegisterUser(loginRegisterRequest);
+            String userId = userService.loginRegisterUser(loginRegisterRequest);
             loginRegisterResponse.setSuccess(true);
             loginRegisterResponse.setUserId(userId);
         } catch (Exception ex) {
@@ -57,7 +57,7 @@ public class UserController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @GetMapping(GET_PROFESSIONAL_USER_DETAILS)
-    public ResponseEntity<GetProfessionalDetailsResponse> getProfessionalDetails(@RequestParam long userId) {
+    public ResponseEntity<GetProfessionalDetailsResponse> getProfessionalDetails(@RequestParam String userId) {
         log.info("UserController.getProfessionalDetails: ");
         GetProfessionalDetailsResponse getProfessionalDetailsResponse = new GetProfessionalDetailsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
@@ -74,7 +74,7 @@ public class UserController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @GetMapping(GET_RECRUITER_USER_DETAILS)
-    public ResponseEntity<GetRecruiterDetailsResponse> getRecruiterDetails(@RequestParam long userId) {
+    public ResponseEntity<GetRecruiterDetailsResponse> getRecruiterDetails(@RequestParam String userId) {
         log.info("UserController.getRecruiter: ");
         GetRecruiterDetailsResponse getRecruiterDetailsResponse = new GetRecruiterDetailsResponse();
         HttpStatus httpStatus = HttpStatus.OK;

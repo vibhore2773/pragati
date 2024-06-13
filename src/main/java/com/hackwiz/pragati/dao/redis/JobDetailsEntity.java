@@ -25,7 +25,7 @@ public class JobDetailsEntity {
     @Id
     private String id;
     @Indexed
-    private long recruiterDetailsId;
+    private String recruiterDetailsId;
     private Skill skill;
     private float rate;
     private JobStatus jobStatus;

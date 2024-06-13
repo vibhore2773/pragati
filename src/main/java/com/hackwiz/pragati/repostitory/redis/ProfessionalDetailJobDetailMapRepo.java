@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProfessionalDetailJobDetailMapRepo extends CrudRepository<ProfessionalDetailJobDetailMapEntity, Long> {
-    List<ProfessionalDetailJobDetailMapEntity> findByProfessionalDetailId(Long professionalDetailId);
+public interface ProfessionalDetailJobDetailMapRepo extends CrudRepository<ProfessionalDetailJobDetailMapEntity, String> {
+    List<ProfessionalDetailJobDetailMapEntity> findByProfessionalDetailId(String professionalDetailId);
 }

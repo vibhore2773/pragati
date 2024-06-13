@@ -18,7 +18,6 @@ public class RecruiterService {
 
     private final JobDetailsEntityRepo jobDetailsEntityRepo;
     private final Producer producer;
-
     private final ObjectMapper objectMapper;
 
     public RecruiterService(RedisHelperService redisHelperService, JobDetailsEntityRepo jobDetailsEntityRepo, Producer producer, ObjectMapper objectMapper) {
@@ -33,7 +32,7 @@ public class RecruiterService {
             JobDetailsEntity jobDetailsEntity = JobDetailsEntity.builder()
                     .id(jobId)
                     .jobStatus(JobStatus.INITIATED)
-                    .recruiterDetailsId(Long.parseLong(recruiterId))
+                    .recruiterDetailsId(recruiterId)
                     .skill(request.getJobType())
                     .timeline(Timeline.builder()
                             .endDate(request.getEndDate())

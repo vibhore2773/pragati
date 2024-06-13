@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProfessionalDetailsRepo extends CrudRepository<ProfessionalDetails, Long> {
-    List<ProfessionalDetails> findByUserId(Long userId);
+public interface ProfessionalDetailsRepo extends CrudRepository<ProfessionalDetails, String> {
+    List<ProfessionalDetails> findByUserId(String userId);
 }
