@@ -1,0 +1,6 @@
+com/hackwiz/pragati/controllers/HealthController.class
+com/hackwiz/pragati/model/dao/request/LoginRequest.class
+com/hackwiz/pragati/controllers/RecruiterController.class
+com/hackwiz/pragati/PragatiApplication.class
+com/hackwiz/pragati/controllers/ProfessionalController.class
+com/hackwiz/pragati/controllers/LoginController.class
