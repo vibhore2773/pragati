@@ -2,7 +2,6 @@ package com.hackwiz.pragati.models.responses;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hackwiz.pragati.dao.redis.JobDetailsEntity;
-import com.hackwiz.pragati.enums.Skill;
 import com.hackwiz.pragati.enums.UserType;
 import com.hackwiz.pragati.models.Address;
 import lombok.AllArgsConstructor;

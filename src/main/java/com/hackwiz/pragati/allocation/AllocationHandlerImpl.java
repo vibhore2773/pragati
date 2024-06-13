@@ -2,7 +2,7 @@ package com.hackwiz.pragati.allocation;
 
 import com.hackwiz.pragati.dao.redis.JobDetailsEntity;
 import com.hackwiz.pragati.dao.redis.ProfessionalDetails;
-import com.hackwiz.pragati.enums.Skill;
+import com.hackwiz.pragati.enums.StaticSkill;
 import com.hackwiz.pragati.models.Address;
 import com.hackwiz.pragati.models.responses.Timeline;
 import com.hackwiz.pragati.repostitory.redis.ProfessionalDetailsRepo;
@@ -30,7 +30,7 @@ public class AllocationHandlerImpl implements AllocationHandler {
         List<ProfessionalDetails> matchedProfessionals = new ArrayList<>();
         for (ProfessionalDetails professionalDetails : professionalDetailsList) {
             if (matchAddress(professionalDetails.getAddress(), jobDetailsEntity.getAddress())
-                    && matchSkill(jobDetailsEntity.getSkill(), professionalDetails.getSkills())
+                    && matchSkill(jobDetailsEntity.getStaticSkill(), professionalDetails.getStaticSkills())
                     && matchTimeline(jobDetailsEntity.getTimeline(), professionalDetails.getAvailability())) {
                 matchedProfessionals.add(professionalDetails);
             }
@@ -42,9 +42,9 @@ public class AllocationHandlerImpl implements AllocationHandler {
         return address1.getCity().equals(address2.getCity()) && address1.getPincode().equals(address2.getPincode());
     }
 
-    private boolean matchSkill(Skill requiredSkill, List<Skill> availableSkills) {
-        for (Skill skill : availableSkills) {
-            if (requiredSkill.equals(skill)) return true;
+    private boolean matchSkill(StaticSkill requiredStaticSkill, List<StaticSkill> availableStaticSkills) {
+        for (StaticSkill staticSkill : availableStaticSkills) {
+            if (requiredStaticSkill.equals(staticSkill)) return true;
         }
         return false;
     }

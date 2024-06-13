@@ -1,7 +1,7 @@
 package com.hackwiz.pragati.dao.redis;
 
 
-import com.hackwiz.pragati.enums.Skill;
+import com.hackwiz.pragati.enums.StaticSkill;
 import com.hackwiz.pragati.models.Address;
 import com.hackwiz.pragati.models.responses.Timeline;
 import lombok.AllArgsConstructor;
@@ -25,7 +25,7 @@ public class ProfessionalDetails {
     private long userId;
     private Address address;
     private String qualification;
-    private List<Skill> skills;
+    private List<StaticSkill> staticSkills;
     private Timeline availability;
     private PersonalDetails personalDetails;
     private List<AssignedJobs> assignedJobs;

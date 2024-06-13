@@ -93,8 +93,8 @@ public class UserService {
 
     public static List<GetProfessionalDetailsResponse.SkillResponse> getSkill(ProfessionalDetails professionalDetails) {
         List<GetProfessionalDetailsResponse.SkillResponse> skillResponses = Collections.emptyList();
-        if (professionalDetails != null && professionalDetails.getSkills() != null) {
-            skillResponses = professionalDetails.getSkills().stream().map(skill -> {
+        if (professionalDetails != null && professionalDetails.getStaticSkills() != null) {
+            skillResponses = professionalDetails.getStaticSkills().stream().map(skill -> {
                 GetProfessionalDetailsResponse.SkillResponse skillResponse = new GetProfessionalDetailsResponse.SkillResponse();
                 skillResponse.setSkill(skill.getName());
                 skillResponse.setRate(skill.getRate());
