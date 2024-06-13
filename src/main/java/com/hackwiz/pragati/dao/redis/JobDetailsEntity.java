@@ -21,7 +21,7 @@ import org.springframework.data.redis.core.index.Indexed;
 public class JobDetailsEntity {
 
     @Id
-    private String id;
+    private long id;
     @Indexed
     private long recruiterDetailsId;
     private Skill skill;
