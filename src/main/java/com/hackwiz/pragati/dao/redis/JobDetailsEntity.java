@@ -22,7 +22,6 @@ public class JobDetailsEntity {
 
     @Id
     private String id;
-
     @Indexed
     private long recruiterDetailsId;
     private Skill skill;
