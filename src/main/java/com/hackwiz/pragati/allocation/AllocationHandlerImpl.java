@@ -4,6 +4,7 @@ import com.hackwiz.pragati.dao.redis.JobDetailsEntity;
 import com.hackwiz.pragati.dao.redis.ProfessionalDetails;
 import com.hackwiz.pragati.enums.Skill;
 import com.hackwiz.pragati.enums.StaticSkill;
+import com.hackwiz.pragati.enums.StaticSkill;
 import com.hackwiz.pragati.models.Address;
 import com.hackwiz.pragati.models.responses.Timeline;
 import com.hackwiz.pragati.repostitory.redis.ProfessionalDetailsRepo;
@@ -31,7 +32,7 @@ public class AllocationHandlerImpl implements AllocationHandler {
         List<ProfessionalDetails> matchedProfessionals = new ArrayList<>();
         for (ProfessionalDetails professionalDetails : professionalDetailsList) {
             if (matchAddress(professionalDetails.getAddress(), jobDetailsEntity.getAddress())
-                    && matchSkill(jobDetailsEntity.getSkill(), professionalDetails.getSkills())
+                    && matchSkill(jobDetailsEntity.getStaticSkill(), professionalDetails.getStaticSkills())
                     && matchTimeline(jobDetailsEntity.getTimeline(), professionalDetails.getAvailability())) {
                 matchedProfessionals.add(professionalDetails);
             }
