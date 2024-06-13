@@ -22,12 +22,14 @@ public class ProfessionalDetails {
 
     @Id
     private long id;
+    private long userId;
     private Address address;
     private String qualification;
     private List<Skill> skills;
     private Timeline availability;
     private PersonalDetails personalDetails;
     private List<AssignedJobs> assignedJobs;
+    private boolean kycVerified;
 
 
     @Data
