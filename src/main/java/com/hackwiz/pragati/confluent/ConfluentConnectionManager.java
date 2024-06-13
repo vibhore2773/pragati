@@ -22,7 +22,7 @@ public class ConfluentConnectionManager {
     @Bean
     public CommandLineRunner CommandLineRunnerBean() {
         return (args) -> {
-            this.producer.sendMessage("key", "value");
+            //this.producer.sendMessage("key", "value");
             MessageListenerContainer listenerContainer = kafkaListenerEndpointRegistry.getListenerContainer("myConsumer");
             listenerContainer.start();
         };

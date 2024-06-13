@@ -2,6 +2,8 @@ package com.hackwiz.pragati.dao.redis;
 
 import com.hackwiz.pragati.enums.JobStatus;
 import com.hackwiz.pragati.enums.Skill;
+import com.hackwiz.pragati.enums.StaticSkill;
+import com.hackwiz.pragati.enums.StaticSkill;
 import com.hackwiz.pragati.models.Address;
 import com.hackwiz.pragati.models.responses.Timeline;
 import lombok.AllArgsConstructor;
@@ -10,6 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 
 @Data
@@ -20,7 +23,8 @@ import org.springframework.data.redis.core.RedisHash;
 public class JobDetailsEntity {
 
     @Id
-    private long id;
+    private String id;
+    @Indexed
     private long recruiterDetailsId;
     private Skill skill;
     private float rate;

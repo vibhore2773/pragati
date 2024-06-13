@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface UserDetailsRepo extends CrudRepository<UserDetailsEntity, Long> {
 
-    List<UserDetailsEntity> findByPhoneNumber(String phoneNumber);
+    List<UserDetailsEntity> findByPhone(String phoneNumber);
 
 }
