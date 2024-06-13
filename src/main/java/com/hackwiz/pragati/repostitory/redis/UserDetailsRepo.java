@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserDetailsRepo extends CrudRepository<UserDetailsEntity, Long> {
+public interface UserDetailsRepo extends CrudRepository<UserDetailsEntity, String> {
 
     List<UserDetailsEntity> findByPhone(String phoneNumber);
 

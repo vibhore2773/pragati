@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface JobDetailsRepo extends CrudRepository<JobDetailsEntity, Long> {
+public interface JobDetailsRepo extends CrudRepository<JobDetailsEntity, String> {
 
-    List<JobDetailsEntity> findAllByRecruiterDetailsId(Long recruiterDetailsId);
+    List<JobDetailsEntity> findAllByRecruiterDetailsId(String recruiterDetailsId);
 }

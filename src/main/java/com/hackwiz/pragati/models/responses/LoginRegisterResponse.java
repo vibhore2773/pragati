@@ -15,5 +15,5 @@ public class LoginRegisterResponse {
 
     private boolean success;
     private String errorMessage;
-    private long userId;
+    private String userId;
 }

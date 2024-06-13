@@ -16,9 +16,9 @@ import org.springframework.data.redis.core.index.Indexed;
 public class RecruiterDetailsEntity {
 
     @Id
-    private long id;
+    private String id;
     @Indexed
-    private long userId;
+    private String userId;
     private Float rating;
     private PersonalDetails personalDetails;
 

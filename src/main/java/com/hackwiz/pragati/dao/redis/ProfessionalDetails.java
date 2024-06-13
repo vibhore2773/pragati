@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 import java.util.List;
 
@@ -21,8 +22,9 @@ import java.util.List;
 public class ProfessionalDetails {
 
     @Id
-    private long id;
-    private long userId;
+    private String id;
+    @Indexed
+    private String userId;
     private Address address;
     private String qualification;
     private List<Skill> skills;

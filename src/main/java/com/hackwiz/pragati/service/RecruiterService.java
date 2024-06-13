@@ -32,7 +32,7 @@ public class RecruiterService {
             JobDetailsEntity jobDetailsEntity = JobDetailsEntity.builder()
                     .id(jobId)
                     .jobStatus(JobStatus.INITIATED)
-                    .recruiterDetailsId(Long.parseLong(recruiterId))
+                    .recruiterDetailsId(recruiterId)
                     .skill(request.getJobType())
                     .timeline(Timeline.builder()
                             .endDate(request.getEndDate())

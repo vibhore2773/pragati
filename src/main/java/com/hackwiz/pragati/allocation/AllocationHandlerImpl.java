@@ -4,8 +4,6 @@ import com.hackwiz.pragati.dao.redis.JobDetailsEntity;
 import com.hackwiz.pragati.dao.redis.ProfessionalDetailJobDetailMapEntity;
 import com.hackwiz.pragati.dao.redis.ProfessionalDetails;
 import com.hackwiz.pragati.enums.Skill;
-import com.hackwiz.pragati.enums.StaticSkill;
-import com.hackwiz.pragati.enums.StaticSkill;
 import com.hackwiz.pragati.models.Address;
 import com.hackwiz.pragati.models.responses.Timeline;
 import com.hackwiz.pragati.repostitory.redis.ProfessionalDetailJobDetailMapRepo;
@@ -71,8 +69,8 @@ public class AllocationHandlerImpl implements AllocationHandler {
     }
 
     private boolean matchTimeline(Timeline requiredTimeline, Timeline availableTimeline) {
-        return availableTimeline.getStartDate().compareTo(requiredTimeline.getStartDate()) >= 0
-                && availableTimeline.getEndDate().compareTo(requiredTimeline.getEndDate()) <= 0;
+        return availableTimeline.getStartDate().compareTo(requiredTimeline.getStartDate()) <= 0
+                && availableTimeline.getEndDate().compareTo(requiredTimeline.getEndDate()) >= 0;
     }
 
 }

@@ -44,7 +44,7 @@ public class UserService {
         this.recruiterDetailsRepo = recruiterDetailsRepo;
     }
 
-    public long loginRegisterUser(LoginRegisterRequest loginRegisterRequest) {
+    public String loginRegisterUser(LoginRegisterRequest loginRegisterRequest) {
         log.info("LoginRegisterService.loginRegisterUser: loginRegisterRequest={}", loginRegisterRequest);
 
         List<UserDetailsEntity> existingUserList = userDetailsRepo.findByPhone(loginRegisterRequest.getPhone());
@@ -71,7 +71,7 @@ public class UserService {
     }
 
 
-    public GetProfessionalDetailsResponse getProfessionalUserDetails(long userId) {
+    public GetProfessionalDetailsResponse getProfessionalUserDetails(String userId) {
         log.info("LoginRegisterService.getProfessionalUserDetails: userId={}", userId);
         Optional<UserDetailsEntity> userDetails = userDetailsRepo.findById(userId);
         UserDetailsEntity userDetailsEntity = userDetails.orElse(null);
@@ -113,7 +113,7 @@ public class UserService {
         return (List<JobDetailsEntity>) jobDetails;
     }
 
-    public GetRecruiterDetailsResponse getRecruiterDetails(long userId) {
+    public GetRecruiterDetailsResponse getRecruiterDetails(String userId) {
         log.info("LoginRegisterService.getRecruiterUserDetails: userId={}", userId);
         Optional<UserDetailsEntity> userDetails = userDetailsRepo.findById(userId);
         UserDetailsEntity userDetailsEntity = userDetails.orElse(null);
@@ -122,18 +122,18 @@ public class UserService {
             throw new RuntimeException("User not found with userId=" + userId);
         }
 
-        RecruiterDetailsEntity recruiterDetailsEntity = recruiterDetailsRepo.findByUserId(userDetailsEntity.getId());
+        List<JobDetailsEntity> jobDetailsEntity = jobDetailsRepo.findAllByRecruiterDetailsId(userDetailsEntity.getId());
         GetRecruiterDetailsResponse getRecruiterDetailsResponse = new GetRecruiterDetailsResponse();
         getRecruiterDetailsResponse.setUserId(userDetailsEntity.getId());
         getRecruiterDetailsResponse.setUserType(userDetailsEntity.getUserType());
 //        getRecruiterDetailsResponse.setAddress(professionalDetails != null ? professionalDetails.getAddress() : null);
 //        getRecruiterDetailsResponse.setKycVerified(professionalDetails != null && professionalDetails.isKycVerified());
-        getRecruiterDetailsResponse.setJobDetails(recruiterDetailsEntity != null ? getRecruiterJobDetails(recruiterDetailsEntity.getId()) : Collections.emptyList());
+        getRecruiterDetailsResponse.setJobDetails(jobDetailsEntity);
         return getRecruiterDetailsResponse;
     }
 
 
-    public List<JobDetailsEntity> getRecruiterJobDetails(Long recruiterDetailId) {
+    public List<JobDetailsEntity> getRecruiterJobDetails(String recruiterDetailId) {
         return jobDetailsRepo.findAllByRecruiterDetailsId(recruiterDetailId);
     }
 

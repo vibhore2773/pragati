@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AddSkillsKycRequest {
-    private long userId;
+    private String userId;
     private List<SkillRequest> skillList;
     private Address address;
     private boolean markKyc;
