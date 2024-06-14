@@ -27,6 +27,7 @@ public class GetProfessionalDetailsResponse {
     private boolean kycVerified;
     private List<JobDetailsEntity> jobDetails;
     private boolean assigned;
+    private Timeline timeline;
 
     @Data
     @Builder

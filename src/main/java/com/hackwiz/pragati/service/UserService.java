@@ -93,6 +93,7 @@ public class UserService {
         getProfessionalDetailsResponse.setSkills(getSkill(professionalDetails));
         getProfessionalDetailsResponse.setJobDetails(professionalDetails != null ? getProfessionalUserJobDetails(professionalDetails) : Collections.emptyList());
         getProfessionalDetailsResponse.setAssigned(professionalDetails != null && professionalDetails.isJobAssigned());
+        getProfessionalDetailsResponse.setTimeline(professionalDetails != null ? professionalDetails.getAvailability() : null);
 
         return getProfessionalDetailsResponse;
     }
