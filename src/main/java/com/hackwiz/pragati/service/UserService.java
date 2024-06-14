@@ -156,6 +156,7 @@ public class UserService {
         jobDetailsView.setTimeline(jobDetailsEntity.getTimeline());
         jobDetailsView.setRequiredProfessionals(jobDetailsView.getRequiredProfessionals());
         jobDetailsView.setSkill(jobDetailsEntity.getSkill());
+        jobDetailsView.setRequiredProfessionals(jobDetailsEntity.getRequiredProfessionals());
 
         return jobDetailsView;
 
