@@ -50,9 +50,7 @@ public class UserController {
         }
         HttpHeaders headers = new HttpHeaders();
         headers.add("Access-Control-Allow-Origin", "*");
-        headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-        headers.add("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization");
-        headers.add("Access-Control-Allow-Credentials", "true");
+        headers.add("Vary", "Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Accept-Encoding");
         return ResponseEntity.status(httpStatus).headers(headers).body(loginRegisterResponse);
     }
 
