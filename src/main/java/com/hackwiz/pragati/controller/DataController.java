@@ -27,9 +27,9 @@ public class DataController {
         List<GetStaticSkillResponse.Skill> skills = new ArrayList<>();
         for (StaticSkill skill : StaticSkill.values()) {
             skills.add(GetStaticSkillResponse.Skill.builder()
-                    .name(skill.name())
+                    .skillName(skill.name())
                     .imageUrl(skill.getImage())
-                    .trendingRate(skill.getRate())
+                    .rate(skill.getRate())
                     .build());
         }
         return GetStaticSkillResponse.builder().skills(skills).build();
