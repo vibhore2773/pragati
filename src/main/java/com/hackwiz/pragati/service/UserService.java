@@ -155,6 +155,7 @@ public class UserService {
         jobDetailsView.setAddress(jobDetailsEntity.getAddress());
         jobDetailsView.setTimeline(jobDetailsEntity.getTimeline());
         jobDetailsView.setRequiredProfessionals(jobDetailsView.getRequiredProfessionals());
+        jobDetailsView.setSkill(jobDetailsEntity.getSkill());
 
         return jobDetailsView;
 
