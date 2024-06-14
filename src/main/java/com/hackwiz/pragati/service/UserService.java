@@ -188,7 +188,7 @@ public class UserService {
 
             professionalDetailsRepo.save(professionalDetailsEntity);
         } else {
-            List<Skill> skillList = professionalDetails.getSkills();
+            List<Skill> skillList = Optional.ofNullable(professionalDetails.getSkills()).orElse(new ArrayList<>());
             for(AddSkillsKycRequest.SkillRequest skillRequest : addSkillsKycRequest.getSkillList()) {
                 skillList.add(skillRequest.getSkillName());
             }
