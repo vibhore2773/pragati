@@ -26,6 +26,7 @@ public class GetProfessionalDetailsResponse {
     private String profilePic;
     private boolean kycVerified;
     private List<JobDetailsEntity> jobDetails;
+    private boolean assigned;
 
     @Data
     @Builder
