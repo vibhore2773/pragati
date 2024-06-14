@@ -7,14 +7,10 @@ import com.hackwiz.pragati.models.responses.GetRecruiterDetailsResponse;
 import com.hackwiz.pragati.models.responses.LoginRegisterResponse;
 import com.hackwiz.pragati.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
@@ -28,6 +24,7 @@ import static com.hackwiz.pragati.constants.ApiPaths.LOGIN_REGISTER_USER;
 @Slf4j
 @RestController
 @RequestMapping("/v1/user")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     private final UserService userService;
@@ -51,7 +48,10 @@ public class UserController {
             log.error("Exception occurred while login/register user. StackTrace : {}", ex.getStackTrace());
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return ResponseEntity.status(httpStatus).body(loginRegisterResponse);
+        HttpHeaders headers = new HttpHeaders();
+//        headers.add("Access-Control-Allow-Origin", "*");
+//        headers.add("Vary", "Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Accept-Encoding");
+        return ResponseEntity.status(httpStatus).headers(headers).body(loginRegisterResponse);
     }
 
     @Consumes(MediaType.APPLICATION_JSON)
