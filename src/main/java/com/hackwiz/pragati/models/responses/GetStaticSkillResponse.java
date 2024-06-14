@@ -13,8 +13,8 @@ public class GetStaticSkillResponse {
     @Data
     @Builder
     public static class Skill {
-        private String name;
+        private String skillName;
         private String imageUrl;
-        private float trendingRate;
+        private float rate;
     }
 }
