@@ -24,7 +24,7 @@ import static com.hackwiz.pragati.constants.ApiPaths.LOGIN_REGISTER_USER;
 @Slf4j
 @RestController
 @RequestMapping("/v1/user")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*://localhost:*/*")
 public class UserController {
 
     private final UserService userService;
