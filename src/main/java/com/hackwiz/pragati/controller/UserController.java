@@ -24,7 +24,7 @@ import static com.hackwiz.pragati.constants.ApiPaths.LOGIN_REGISTER_USER;
 @Slf4j
 @RestController
 @RequestMapping("/v1/user")
-@CrossOrigin(origins = "*://localhost:*/*")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     private final UserService userService;
@@ -49,8 +49,8 @@ public class UserController {
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Access-Control-Allow-Origin", "*");
-        headers.add("Vary", "Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Accept-Encoding");
+//        headers.add("Access-Control-Allow-Origin", "*");
+//        headers.add("Vary", "Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Accept-Encoding");
         return ResponseEntity.status(httpStatus).headers(headers).body(loginRegisterResponse);
     }
 
