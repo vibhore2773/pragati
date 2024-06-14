@@ -84,6 +84,7 @@ public class UserService {
         ProfessionalDetails professionalDetails = professionalDetailsList.isEmpty() ? null : professionalDetailsList.get(0);
         GetProfessionalDetailsResponse getProfessionalDetailsResponse = new GetProfessionalDetailsResponse();
         getProfessionalDetailsResponse.setUserId(userDetailsEntity.getId());
+        getProfessionalDetailsResponse.setName(userDetailsEntity.getName());
         getProfessionalDetailsResponse.setUserType(userDetailsEntity.getUserType());
         getProfessionalDetailsResponse.setAddress(professionalDetails != null ? professionalDetails.getAddress() : null);
         getProfessionalDetailsResponse.setKycVerified(professionalDetails != null && professionalDetails.isKycVerified());
@@ -125,16 +126,37 @@ public class UserService {
         List<JobDetailsEntity> jobDetailsEntity = jobDetailsRepo.findAllByRecruiterDetailsId(userDetailsEntity.getId());
         GetRecruiterDetailsResponse getRecruiterDetailsResponse = new GetRecruiterDetailsResponse();
         getRecruiterDetailsResponse.setUserId(userDetailsEntity.getId());
+        getRecruiterDetailsResponse.setName(userDetailsEntity.getName());
         getRecruiterDetailsResponse.setUserType(userDetailsEntity.getUserType());
 //        getRecruiterDetailsResponse.setAddress(professionalDetails != null ? professionalDetails.getAddress() : null);
 //        getRecruiterDetailsResponse.setKycVerified(professionalDetails != null && professionalDetails.isKycVerified());
-        getRecruiterDetailsResponse.setJobDetails(jobDetailsEntity);
+        getRecruiterDetailsResponse.setJobDetails(jobDetailsEntity.stream().map(this::getJobDetailsView).toList());
         return getRecruiterDetailsResponse;
     }
 
 
     public List<JobDetailsEntity> getRecruiterJobDetails(String recruiterDetailId) {
         return jobDetailsRepo.findAllByRecruiterDetailsId(recruiterDetailId);
+    }
+
+    private GetRecruiterDetailsResponse.JobDetailsView getJobDetailsView(JobDetailsEntity jobDetailsEntity) {
+        List<String> professionalDetailIds = professionalDetailJobDetailMapRepo.findByJobDetailId(jobDetailsEntity.getId()).stream().map(ProfessionalDetailJobDetailMapEntity::getProfessionalDetailId).toList();
+        Iterable<ProfessionalDetails> professionalDetails = professionalDetailsRepo.findAllById(professionalDetailIds);
+        List<ProfessionalDetails> professionalDetailsList = (List<ProfessionalDetails>) professionalDetails;
+        List<String> userIds = professionalDetailsList.stream().map(ProfessionalDetails::getUserId).toList();
+        Iterable<UserDetailsEntity> userDetails = userDetailsRepo.findAllById(userIds);
+        GetRecruiterDetailsResponse.JobDetailsView jobDetailsView = new GetRecruiterDetailsResponse.JobDetailsView();
+        jobDetailsView.setUserDetailsEntityList((List<UserDetailsEntity>) userDetails);
+        jobDetailsView.setId(jobDetailsEntity.getId());
+        jobDetailsView.setJobStatus(jobDetailsEntity.getJobStatus());
+        jobDetailsView.setRecruiterDetailsId(jobDetailsEntity.getRecruiterDetailsId());
+        jobDetailsView.setActive(jobDetailsEntity.isActive());
+        jobDetailsView.setAddress(jobDetailsEntity.getAddress());
+        jobDetailsView.setTimeline(jobDetailsEntity.getTimeline());
+        jobDetailsView.setRequiredProfessionals(jobDetailsView.getRequiredProfessionals());
+
+        return jobDetailsView;
+
     }
 
 

@@ -20,6 +20,7 @@ public class GetProfessionalDetailsResponse {
 
     private UserType userType;
     private String userId;
+    private String name;
     private List<SkillResponse> skills;
     private Address address;
     private String profilePic;
