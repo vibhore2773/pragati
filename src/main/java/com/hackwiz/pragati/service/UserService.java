@@ -10,6 +10,7 @@ import com.hackwiz.pragati.models.requests.AddSkillsKycRequest;
 import com.hackwiz.pragati.models.requests.LoginRegisterRequest;
 import com.hackwiz.pragati.models.responses.GetProfessionalDetailsResponse;
 import com.hackwiz.pragati.models.responses.GetRecruiterDetailsResponse;
+import com.hackwiz.pragati.models.responses.Timeline;
 import com.hackwiz.pragati.repostitory.redis.JobDetailsRepo;
 import com.hackwiz.pragati.repostitory.redis.ProfessionalDetailJobDetailMapRepo;
 import com.hackwiz.pragati.repostitory.redis.ProfessionalDetailsRepo;
@@ -18,6 +19,7 @@ import com.hackwiz.pragati.repostitory.redis.UserDetailsRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -185,7 +187,7 @@ public class UserService {
                     .userId(userDetailsEntity.getId())
                     .address(addSkillsKycRequest.getAddress())
                     .kycVerified(addSkillsKycRequest.isMarkKyc())
-                    .availability(addSkillsKycRequest.getAvailability())
+                    .availability(getTimeline())
                     .skills(skillList)
                     .build();
 
@@ -202,5 +204,13 @@ public class UserService {
             professionalDetailsRepo.save(professionalDetails);
         }
         return getProfessionalUserDetails(userDetailsEntity.getId());
+    }
+
+
+    private static Timeline getTimeline() {
+        Timeline timeline = new Timeline();
+        timeline.setStartDate(Date.valueOf("2021-01-01"));
+        timeline.setEndDate(Date.valueOf("2025-01-01"));
+        return timeline;
     }
 }
