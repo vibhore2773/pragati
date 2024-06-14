@@ -3,9 +3,11 @@ package com.hackwiz.pragati.allocation;
 import com.hackwiz.pragati.dao.redis.JobDetailsEntity;
 import com.hackwiz.pragati.dao.redis.ProfessionalDetailJobDetailMapEntity;
 import com.hackwiz.pragati.dao.redis.ProfessionalDetails;
+import com.hackwiz.pragati.enums.JobStatus;
 import com.hackwiz.pragati.enums.Skill;
 import com.hackwiz.pragati.models.Address;
 import com.hackwiz.pragati.models.responses.Timeline;
+import com.hackwiz.pragati.repostitory.redis.JobDetailsEntityRepo;
 import com.hackwiz.pragati.repostitory.redis.ProfessionalDetailJobDetailMapRepo;
 import com.hackwiz.pragati.repostitory.redis.ProfessionalDetailsRepo;
 import org.springframework.stereotype.Service;
@@ -21,9 +23,12 @@ public class AllocationHandlerImpl implements AllocationHandler {
 
     private final ProfessionalDetailJobDetailMapRepo professionalDetailJobDetailMapRepo;
 
-    public AllocationHandlerImpl(ProfessionalDetailsRepo userDetailsRepo, ProfessionalDetailJobDetailMapRepo professionalDetailJobDetailMapRepo) {
+    private final JobDetailsEntityRepo jobDetailsEntityRepo;
+
+    public AllocationHandlerImpl(ProfessionalDetailsRepo userDetailsRepo, ProfessionalDetailJobDetailMapRepo professionalDetailJobDetailMapRepo, JobDetailsEntityRepo jobDetailsEntityRepo) {
         this.professionalDetailsRepo = userDetailsRepo;
         this.professionalDetailJobDetailMapRepo = professionalDetailJobDetailMapRepo;
+        this.jobDetailsEntityRepo = jobDetailsEntityRepo;
     }
 
     public boolean processJobAllocation(JobDetailsEntity jobDetailsEntity) {
@@ -40,6 +45,8 @@ public class AllocationHandlerImpl implements AllocationHandler {
             }
             professionalDetailJobDetailMapRepo.saveAll(professionalDetailJobDetailMapEntityList);
             professionalDetailsRepo.saveAll(matchedProfessionals);
+            jobDetailsEntity.setJobStatus(JobStatus.IN_PROGRESS);
+            jobDetailsEntityRepo.save(jobDetailsEntity);
             return true;
         }
         return false;
